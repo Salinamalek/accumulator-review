@@ -67,20 +67,21 @@ const myLetters = numOfOccurences("AccabbabbCcbcbB")
 
 function targetLetters(letters, target){
   //Guard clause
+  //make sure each value in letters is a number
   for (const key in letters){
     if(typeof letters[key] !== 'number'){
       return "One of the values is not a number"
     }
   }
 
+  //Guard clause #2
+  //make sure target is a number
   if (typeof target !== 'number'){
     return "Target must be a number"
   }
 
-  
   //initialize accumulator
   let accumulator = []
-
 
   // our logic goes here
   for (const key in letters) {
@@ -99,6 +100,7 @@ function targetLetters(letters, target){
   // return accumulator
   return accumulator
 }
+
 // TEST
 // console.log(targetLetters(myLetters, 3))
 // console.log(targetLetters(myLetters, "something else"))
@@ -120,6 +122,42 @@ function targetLetters(letters, target){
     getCartTotal(cart);
  *  //> "$30.00"
  */
+
+function getCartTotal(products){
+  // initialize accumulator
+  let accumulator = 0
+
+  // our logic goes here
+  //iterate over the products array
+  for (let i = 0; i < products.length; i++) {
+    //make variable for each product for readability
+    const product = products[i];
+
+    //add products' price in cents multiplied by products' quantity to the accumulator
+    accumulator += product.priceInCents * product.quantity
+  }
+
+  //divide accumulator by 100 to convert price in cents to dollars
+  accumulator /= 100
+
+  //add decimal and two places after, to the accumulator
+  accumulator = accumulator.toFixed(2)
+
+
+  //add $ sign to our accumulator
+  accumulator = `$${accumulator}`
+
+
+  //return accumulator
+  return accumulator
+}    
+
+const cart = [
+  { name: "T-Shirt", priceInCents: 1200, quantity: 1 },
+  { name: "Socks", priceInCents: 900, quantity: 2 },
+];
+
+// console.log(getCartTotal(cart))
 
 
 // =====================================================================
