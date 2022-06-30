@@ -66,6 +66,18 @@ const myLetters = numOfOccurences("AccabbabbCcbcbB")
  */
 
 function targetLetters(letters, target){
+  //Guard clause
+  for (const key in letters){
+    if(typeof letters[key] !== 'number'){
+      return "One of the values is not a number"
+    }
+  }
+
+  if (typeof target !== 'number'){
+    return "Target must be a number"
+  }
+
+  
   //initialize accumulator
   let accumulator = []
 
@@ -89,6 +101,7 @@ function targetLetters(letters, target){
 }
 // TEST
 // console.log(targetLetters(myLetters, 3))
+// console.log(targetLetters(myLetters, "something else"))
 
 /**
  * getCartTotal()
@@ -109,7 +122,7 @@ function targetLetters(letters, target){
  */
 
 
-
+// =====================================================================
     // NOTES 
 
   //   function calculateTotal(rolls){
